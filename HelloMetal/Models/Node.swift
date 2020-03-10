@@ -48,6 +48,8 @@ class Node {
   var rotationZ: Float = 0.0
   var scale: Float = 1.0
   
+  var time: CFTimeInterval = 0.0
+  
   // MARK: - Initialization
   
   init(name: String, vertices: [Vertex], device: MTLDevice) {
@@ -72,7 +74,7 @@ class Node {
   
   // MARK: - Methods
   
-  func render(commandQueue: MTLCommandQueue, pipelineState: MTLRenderPipelineState, drawable: CAMetalDrawable, projectionMatrix: Matrix4, clearColor: MTLClearColor?){
+  func render(commandQueue: MTLCommandQueue, pipelineState: MTLRenderPipelineState, drawable: CAMetalDrawable, parentModelViewMatrix: Matrix4, projectionMatrix: Matrix4, clearColor: MTLClearColor?){
 
     let renderPassDescriptor = MTLRenderPassDescriptor()
     renderPassDescriptor.colorAttachments[0].texture = drawable.texture
@@ -84,12 +86,19 @@ class Node {
     let commandBuffer = commandQueue.makeCommandBuffer()
 
     let renderEncoder = commandBuffer?.makeRenderCommandEncoder(descriptor: renderPassDescriptor)
+    
+    // For now cull mode is used instead of depth buffer
+    renderEncoder?.setCullMode(MTLCullMode.front)
+    
     renderEncoder?.setRenderPipelineState(pipelineState)
     renderEncoder?.setVertexBuffer(vertexBuffer, offset: 0, index: 0)
     
     // 1. Convert the convenience properties (like position
     // and rotation) into a model matrix
     let nodeModelMatrix = self.modelMatrix()
+    
+    // parentModelViewMatrix represents camera position
+    nodeModelMatrix.multiplyLeft(parentModelViewMatrix)
     
     // 2. Ask the device to create a buffer with
     // shared CPU/GPU memory
@@ -123,6 +132,10 @@ class Node {
     matrix.rotateAroundX(rotationX, y: rotationY, z: rotationZ)
     matrix.scale(scale, y: scale, z: scale)
     return matrix
+  }
+  
+  func updateWithDelta(delta: CFTimeInterval) {
+    time += delta
   }
   
 }

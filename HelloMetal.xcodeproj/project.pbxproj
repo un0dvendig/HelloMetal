@@ -70,16 +70,14 @@
 		D2A5F2021F4A9144005CD714 /* HelloMetal */ = {
 			isa = PBXGroup;
 			children = (
+				D2A5F2201F4A96D0005CD714 /* AppDelegate.swift */,
 				DD3452A62417A4E100EDA603 /* Matrix */,
 				DD34529D2417A43700EDA603 /* HelloMetal-Bridging-Header.h */,
 				DD3452A52417A4D800EDA603 /* Models */,
-				D2A5F2201F4A96D0005CD714 /* AppDelegate.swift */,
-				4374F55F213C0EC0006ABEA0 /* ViewController.swift */,
+				DD3452AC2417B8C900EDA603 /* Resources */,
 				DD34529B24179A5F00EDA603 /* Shaders.metal */,
-				D2A5F2071F4A9144005CD714 /* Main.storyboard */,
-				D2A5F20A1F4A9144005CD714 /* Assets.xcassets */,
-				5C2901821F8F6DE700803663 /* LaunchScreen.storyboard */,
-				D2A5F20F1F4A9144005CD714 /* Info.plist */,
+				DD3452AB2417B8B400EDA603 /* Storyboards */,
+				4374F55F213C0EC0006ABEA0 /* ViewController.swift */,
 			);
 			path = HelloMetal;
 			sourceTree = "<group>";
@@ -87,10 +85,10 @@
 		DD3452A52417A4D800EDA603 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				DD3452A12417A49200EDA603 /* Vertex.swift */,
+				DD3452A92417AC9800EDA603 /* Cube.swift */,
 				DD3452A32417A4D400EDA603 /* Node.swift */,
 				DD3452A72417A89800EDA603 /* Triangle.swift */,
-				DD3452A92417AC9800EDA603 /* Cube.swift */,
+				DD3452A12417A49200EDA603 /* Vertex.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -102,6 +100,24 @@
 				DD34529F2417A43700EDA603 /* Matrix4.m */,
 			);
 			path = Matrix;
+			sourceTree = "<group>";
+		};
+		DD3452AB2417B8B400EDA603 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				5C2901821F8F6DE700803663 /* LaunchScreen.storyboard */,
+				D2A5F2071F4A9144005CD714 /* Main.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		DD3452AC2417B8C900EDA603 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D2A5F20A1F4A9144005CD714 /* Assets.xcassets */,
+				D2A5F20F1F4A9144005CD714 /* Info.plist */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -318,7 +334,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = QZTJ8W8QRE;
-				INFOPLIST_FILE = "$(SRCROOT)/HelloMetal/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/HelloMetal/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = un0dvend1g.hellometal;
@@ -336,7 +352,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				DEVELOPMENT_TEAM = QZTJ8W8QRE;
-				INFOPLIST_FILE = "$(SRCROOT)/HelloMetal/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/HelloMetal/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = un0dvend1g.hellometal;
