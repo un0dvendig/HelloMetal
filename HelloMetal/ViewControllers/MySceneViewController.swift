@@ -28,6 +28,7 @@
 
 import Metal
 import UIKit
+import simd
 
 class MySceneViewController: MetalViewController {
   
@@ -36,8 +37,7 @@ class MySceneViewController: MetalViewController {
   var lastPanLocation: CGPoint!
   var objectToDraw: Cube!
   let panSensivity: Float = 5.0
-  var worldModelMatrix: Matrix4!
-  
+  var worldModelMatrix: float4x4!
   
   // MARK: - View life cycle
   
@@ -53,14 +53,14 @@ class MySceneViewController: MetalViewController {
   // MARK: - Private methods
   
   private func setupWorldModelMatrix() {
-    worldModelMatrix = Matrix4()
+    worldModelMatrix = float4x4()
     worldModelMatrix.translate(0.0, y: 0.0, z: -4)
-    let angleRadian = Matrix4.degrees(toRad: 25)
+    let angleRadian = float4x4.degrees(toRad: 25)
     worldModelMatrix.rotateAroundX(angleRadian, y: 0.0, z: 0.0)
   }
   
   private func createObjectToDraw() {
-    objectToDraw = Cube(device: device, commandQ: commandQueue)
+    objectToDraw = Cube(device: device, commandQ: commandQueue, textureLoader: textureLoader)
   }
   
   private func setupGestures() {

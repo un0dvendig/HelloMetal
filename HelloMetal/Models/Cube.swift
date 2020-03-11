@@ -27,11 +27,11 @@
 /// THE SOFTWARE.
 
 import Foundation
-import Metal
+import MetalKit
 
 class Cube: Node {
   
-  init(device: MTLDevice, commandQ: MTLCommandQueue){
+  init(device: MTLDevice, commandQ: MTLCommandQueue, textureLoader: MTKTextureLoader){
     // 1
 
     //Front
@@ -81,10 +81,11 @@ class Cube: Node {
     ]
 
     //3
-    let texture = MetalTexture(resourceName: "cube", ext: "png", mipmaped: true)
-    texture.loadTexture(device: device, commandQ: commandQ, flip: true)
+    let path = Bundle.main.path(forResource: "cube", ofType: "png")!
+    let data = NSData(contentsOfFile: path)! as Data
+    let texture = try! textureLoader.newTexture(data: data, options: [.SRGB : (false as NSNumber)])
 
-    super.init(name: "Cube", vertices: verticesArray, device: device, texture: texture.texture)
+    super.init(name: "Cube", vertices: verticesArray, device: device, texture: texture)
   }
 
 //  Uncomment to `animate` cube

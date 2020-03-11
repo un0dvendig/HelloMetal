@@ -29,6 +29,7 @@
 import Foundation
 import Metal
 import QuartzCore
+import simd
 
 class Node {
   
@@ -73,13 +74,13 @@ class Node {
     self.vertexCount = vertices.count
     self.texture = texture
     
-    let sizeOfUniformsBuffer = MemoryLayout<Float>.size * Matrix4.numberOfElements() * 2 + Light.size()
+    let sizeOfUniformsBuffer = MemoryLayout<Float>.size * float4x4.numberOfElements() * 2 + Light.size()
     self.bufferProvider = BufferProvider(device: device, inflightBuffersCount: 3, sizeOfUniformsBuffer: sizeOfUniformsBuffer)
   }
   
   // MARK: - Methods
   
-  func render(commandQueue: MTLCommandQueue, pipelineState: MTLRenderPipelineState, drawable: CAMetalDrawable, parentModelViewMatrix: Matrix4, projectionMatrix: Matrix4, clearColor: MTLClearColor?) {
+  func render(commandQueue: MTLCommandQueue, pipelineState: MTLRenderPipelineState, drawable: CAMetalDrawable, parentModelViewMatrix: float4x4, projectionMatrix: float4x4, clearColor: MTLClearColor?) {
     _ = bufferProvider.availableResourcesSemaphore.wait(timeout: .distantFuture)
     
     let renderPassDescriptor = MTLRenderPassDescriptor()
@@ -109,7 +110,7 @@ class Node {
     
     // 1. Convert the convenience properties (like position
     // and rotation) into a model matrix
-    let nodeModelMatrix = self.modelMatrix()
+    var nodeModelMatrix = self.modelMatrix()
     
     // parentModelViewMatrix represents camera position
     nodeModelMatrix.multiplyLeft(parentModelViewMatrix)
@@ -140,8 +141,8 @@ class Node {
     commandBuffer?.commit()
   }
   
-  func modelMatrix() -> Matrix4 {
-    let matrix = Matrix4()
+  func modelMatrix() -> float4x4 {
+    var matrix = float4x4()
     matrix.translate(positionX, y: positionY, z: positionZ)
     matrix.rotateAroundX(rotationX, y: rotationY, z: rotationZ)
     matrix.scale(scale, y: scale, z: scale)

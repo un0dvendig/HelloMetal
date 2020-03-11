@@ -28,6 +28,7 @@
 
 import Foundation
 import Metal
+import simd
 
 class BufferProvider: NSObject {
   
@@ -60,17 +61,21 @@ class BufferProvider: NSObject {
   }
   
   // MARK: - Methods
-  func nextUniformsBuffer(projectionMatrix: Matrix4, modelViewMatrix: Matrix4, light: Light) -> MTLBuffer {
+  func nextUniformsBuffer(projectionMatrix: float4x4, modelViewMatrix: float4x4, light: Light) -> MTLBuffer {
     let buffer = uniformsBuffers[availableBufferIndex]
     
     let bufferPointer = buffer.contents()
     
+    
+    var projectionMatrix = projectionMatrix
+    var modelViewMatrix = modelViewMatrix
+    
     // Copy modelViewMatrix and projectionMatrix matrices to uniform buffer
-    memcpy(bufferPointer, modelViewMatrix.raw(), MemoryLayout<Float>.size * Matrix4.numberOfElements())
-    memcpy(bufferPointer + MemoryLayout<Float>.size * Matrix4.numberOfElements(), projectionMatrix.raw(), MemoryLayout<Float>.size * Matrix4.numberOfElements())
+    memcpy(bufferPointer, &modelViewMatrix, MemoryLayout<Float>.size * float4x4.numberOfElements())
+    memcpy(bufferPointer + MemoryLayout<Float>.size * float4x4.numberOfElements(), &projectionMatrix, MemoryLayout<Float>.size * float4x4.numberOfElements())
     
     // Copy light data to uniform buffer
-    memcpy(bufferPointer + 2 * MemoryLayout<Float>.size * Matrix4.numberOfElements(), light.raw(), Light.size())
+    memcpy(bufferPointer + 2 * MemoryLayout<Float>.size * float4x4.numberOfElements(), light.raw(), Light.size())
     
     availableBufferIndex += 1
     if availableBufferIndex == inflightBuffersCount {

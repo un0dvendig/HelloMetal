@@ -12,16 +12,15 @@
 		D2A5F20B1F4A9144005CD714 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D2A5F20A1F4A9144005CD714 /* Assets.xcassets */; };
 		D2A5F2211F4A96D0005CD714 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2A5F2201F4A96D0005CD714 /* AppDelegate.swift */; };
 		DD34529C24179A5F00EDA603 /* Shaders.metal in Sources */ = {isa = PBXBuildFile; fileRef = DD34529B24179A5F00EDA603 /* Shaders.metal */; };
-		DD3452A02417A43700EDA603 /* Matrix4.m in Sources */ = {isa = PBXBuildFile; fileRef = DD34529F2417A43700EDA603 /* Matrix4.m */; };
 		DD3452A22417A49200EDA603 /* Vertex.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3452A12417A49200EDA603 /* Vertex.swift */; };
 		DD3452A42417A4D400EDA603 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3452A32417A4D400EDA603 /* Node.swift */; };
 		DD3452AA2417AC9800EDA603 /* Cube.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3452A92417AC9800EDA603 /* Cube.swift */; };
 		DD3452AF2417BE1C00EDA603 /* MetalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3452AE2417BE1C00EDA603 /* MetalViewController.swift */; };
 		DD3452B12417BE8D00EDA603 /* MySceneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD3452B02417BE8D00EDA603 /* MySceneViewController.swift */; };
 		DD7ED3442418E68D00DB7CCC /* BufferProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7ED3432418E68D00DB7CCC /* BufferProvider.swift */; };
-		DD7ED3462418EC7100DB7CCC /* MetalTexture.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7ED3452418EC7100DB7CCC /* MetalTexture.swift */; };
 		DD7ED3482418F1CD00DB7CCC /* cube.png in Resources */ = {isa = PBXBuildFile; fileRef = DD7ED3472418F1CD00DB7CCC /* cube.png */; };
 		DD7ED34A2418FC2400DB7CCC /* Light.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7ED3492418FC2400DB7CCC /* Light.swift */; };
+		DD7ED34C24192EA500DB7CCC /* float4x4+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7ED34B24192EA500DB7CCC /* float4x4+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,18 +31,15 @@
 		D2A5F20F1F4A9144005CD714 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D2A5F2201F4A96D0005CD714 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DD34529B24179A5F00EDA603 /* Shaders.metal */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.metal; path = Shaders.metal; sourceTree = "<group>"; };
-		DD34529D2417A43700EDA603 /* HelloMetal-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "HelloMetal-Bridging-Header.h"; sourceTree = "<group>"; };
-		DD34529E2417A43700EDA603 /* Matrix4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Matrix4.h; sourceTree = "<group>"; };
-		DD34529F2417A43700EDA603 /* Matrix4.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Matrix4.m; sourceTree = "<group>"; };
 		DD3452A12417A49200EDA603 /* Vertex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vertex.swift; sourceTree = "<group>"; };
 		DD3452A32417A4D400EDA603 /* Node.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Node.swift; sourceTree = "<group>"; };
 		DD3452A92417AC9800EDA603 /* Cube.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cube.swift; sourceTree = "<group>"; };
 		DD3452AE2417BE1C00EDA603 /* MetalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetalViewController.swift; sourceTree = "<group>"; };
 		DD3452B02417BE8D00EDA603 /* MySceneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MySceneViewController.swift; sourceTree = "<group>"; };
 		DD7ED3432418E68D00DB7CCC /* BufferProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BufferProvider.swift; sourceTree = "<group>"; };
-		DD7ED3452418EC7100DB7CCC /* MetalTexture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetalTexture.swift; sourceTree = "<group>"; };
 		DD7ED3472418F1CD00DB7CCC /* cube.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cube.png; sourceTree = "<group>"; };
 		DD7ED3492418FC2400DB7CCC /* Light.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Light.swift; sourceTree = "<group>"; };
+		DD7ED34B24192EA500DB7CCC /* float4x4+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "float4x4+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,15 +74,14 @@
 		D2A5F2021F4A9144005CD714 /* HelloMetal */ = {
 			isa = PBXGroup;
 			children = (
-				D2A5F2201F4A96D0005CD714 /* AppDelegate.swift */,
-				DD3452A62417A4E100EDA603 /* Matrix */,
-				DD34529D2417A43700EDA603 /* HelloMetal-Bridging-Header.h */,
+				DD7ED34D24192ECB00DB7CCC /* AppDelegate */,
+				DD7ED34E24192ED400DB7CCC /* Extensions */,
 				DD3452A52417A4D800EDA603 /* Models */,
 				DD3452AC2417B8C900EDA603 /* Resources */,
-				DD34529B24179A5F00EDA603 /* Shaders.metal */,
+				DD7ED34F24192EE900DB7CCC /* Shaders */,
 				DD3452AB2417B8B400EDA603 /* Storyboards */,
-				DD3452AD2417BDF500EDA603 /* ViewControllers */,
 				DD7ED3422418E66F00DB7CCC /* Utils */,
+				DD3452AD2417BDF500EDA603 /* ViewControllers */,
 			);
 			path = HelloMetal;
 			sourceTree = "<group>";
@@ -95,21 +90,11 @@
 			isa = PBXGroup;
 			children = (
 				DD3452A92417AC9800EDA603 /* Cube.swift */,
-				DD7ED3452418EC7100DB7CCC /* MetalTexture.swift */,
 				DD3452A32417A4D400EDA603 /* Node.swift */,
 				DD3452A12417A49200EDA603 /* Vertex.swift */,
 				DD7ED3492418FC2400DB7CCC /* Light.swift */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		DD3452A62417A4E100EDA603 /* Matrix */ = {
-			isa = PBXGroup;
-			children = (
-				DD34529E2417A43700EDA603 /* Matrix4.h */,
-				DD34529F2417A43700EDA603 /* Matrix4.m */,
-			);
-			path = Matrix;
 			sourceTree = "<group>";
 		};
 		DD3452AB2417B8B400EDA603 /* Storyboards */ = {
@@ -124,8 +109,8 @@
 		DD3452AC2417B8C900EDA603 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				DD7ED3472418F1CD00DB7CCC /* cube.png */,
 				D2A5F20A1F4A9144005CD714 /* Assets.xcassets */,
+				DD7ED3472418F1CD00DB7CCC /* cube.png */,
 				D2A5F20F1F4A9144005CD714 /* Info.plist */,
 			);
 			path = Resources;
@@ -146,6 +131,30 @@
 				DD7ED3432418E68D00DB7CCC /* BufferProvider.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		DD7ED34D24192ECB00DB7CCC /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				D2A5F2201F4A96D0005CD714 /* AppDelegate.swift */,
+			);
+			path = AppDelegate;
+			sourceTree = "<group>";
+		};
+		DD7ED34E24192ED400DB7CCC /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				DD7ED34B24192EA500DB7CCC /* float4x4+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		DD7ED34F24192EE900DB7CCC /* Shaders */ = {
+			isa = PBXGroup;
+			children = (
+				DD34529B24179A5F00EDA603 /* Shaders.metal */,
+			);
+			path = Shaders;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -221,11 +230,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DD7ED3462418EC7100DB7CCC /* MetalTexture.swift in Sources */,
+				DD7ED34C24192EA500DB7CCC /* float4x4+Extensions.swift in Sources */,
 				DD7ED3442418E68D00DB7CCC /* BufferProvider.swift in Sources */,
 				DD34529C24179A5F00EDA603 /* Shaders.metal in Sources */,
 				DD7ED34A2418FC2400DB7CCC /* Light.swift in Sources */,
-				DD3452A02417A43700EDA603 /* Matrix4.m in Sources */,
 				DD3452A42417A4D400EDA603 /* Node.swift in Sources */,
 				DD3452AA2417AC9800EDA603 /* Cube.swift in Sources */,
 				DD3452B12417BE8D00EDA603 /* MySceneViewController.swift in Sources */,
@@ -371,7 +379,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = un0dvend1g.hellometal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "HelloMetal/HelloMetal-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -389,7 +396,6 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = un0dvend1g.hellometal;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "HelloMetal/HelloMetal-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
