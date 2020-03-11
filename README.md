@@ -13,4 +13,9 @@ raywenderlich tutorials. Metal tutorials.
 - [X] Complete Part 3.
 - [X] Complete Part 4.
 - [X] Complete Part 5.
-- [ ] Complete README.
+- [X] Complete README.
+
+## Final versions
+| Simulator | iPhone 7 Plus |
+| --- | --- |
+| ![Simulator Animation](https://github.com/un0dvendig/HelloMetal/blob/assets/Simulator.gif?raw=true) | ![iPhone 7 Plus Animation](https://github.com/un0dvendig/HelloMetal/blob/assets/iPhone%207%20Plus.gif?raw=true) |
