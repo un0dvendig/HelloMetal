@@ -10,6 +10,6 @@ raywenderlich tutorials. Metal tutorials.
 ## TO-DO:
 - [X] Complete Part 1.
 - [X] Complete Part 2.
-- [ ] Complete Part 3.
+- [X] Complete Part 3.
 - [ ] Complete Part 4.
 - [ ] Complete Part 5.
