@@ -12,4 +12,5 @@ raywenderlich tutorials. Metal tutorials.
 - [X] Complete Part 2.
 - [X] Complete Part 3.
 - [X] Complete Part 4.
-- [ ] Complete Part 5.
+- [X] Complete Part 5.
+- [ ] Complete README.
