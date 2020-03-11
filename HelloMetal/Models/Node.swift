@@ -30,6 +30,7 @@ import Foundation
 import Metal
 import QuartzCore
 import simd
+import UIKit
 
 class Node {
   
@@ -46,7 +47,14 @@ class Node {
   var rotationY: Float = 0.0
   var rotationZ: Float = 0.0
   lazy var samplerState: MTLSamplerState? = Node.defaultSampler(device: self.device)
-  var scale: Float = 1.0
+  var scale: Float {
+    // TODO: Handle iPhoneX properly
+    if UIDevice.current.hasNotch {
+      return 0.9
+    } else {
+      return 1.0
+    }
+  }
   var texture: MTLTexture
   var time: CFTimeInterval = 0.0
   var vertexCount: Int

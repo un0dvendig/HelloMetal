@@ -21,6 +21,7 @@
 		DD7ED3482418F1CD00DB7CCC /* cube.png in Resources */ = {isa = PBXBuildFile; fileRef = DD7ED3472418F1CD00DB7CCC /* cube.png */; };
 		DD7ED34A2418FC2400DB7CCC /* Light.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7ED3492418FC2400DB7CCC /* Light.swift */; };
 		DD7ED34C24192EA500DB7CCC /* float4x4+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7ED34B24192EA500DB7CCC /* float4x4+Extensions.swift */; };
+		DDD9FB2E24193DC9009E705E /* UIDevice+hasNotch.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDD9FB2D24193DC9009E705E /* UIDevice+hasNotch.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		DD7ED3472418F1CD00DB7CCC /* cube.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cube.png; sourceTree = "<group>"; };
 		DD7ED3492418FC2400DB7CCC /* Light.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Light.swift; sourceTree = "<group>"; };
 		DD7ED34B24192EA500DB7CCC /* float4x4+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "float4x4+Extensions.swift"; sourceTree = "<group>"; };
+		DDD9FB2D24193DC9009E705E /* UIDevice+hasNotch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+hasNotch.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				DD7ED34B24192EA500DB7CCC /* float4x4+Extensions.swift */,
+				DDD9FB2D24193DC9009E705E /* UIDevice+hasNotch.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -233,6 +236,7 @@
 				DD7ED34C24192EA500DB7CCC /* float4x4+Extensions.swift in Sources */,
 				DD7ED3442418E68D00DB7CCC /* BufferProvider.swift in Sources */,
 				DD34529C24179A5F00EDA603 /* Shaders.metal in Sources */,
+				DDD9FB2E24193DC9009E705E /* UIDevice+hasNotch.swift in Sources */,
 				DD7ED34A2418FC2400DB7CCC /* Light.swift in Sources */,
 				DD3452A42417A4D400EDA603 /* Node.swift in Sources */,
 				DD3452AA2417AC9800EDA603 /* Cube.swift in Sources */,
