@@ -70,7 +70,7 @@ class MetalViewController: UIViewController {
       
       view.contentScaleFactor = scale
       metalLayer.frame = CGRect(x: 0, y: 0, width: layerSize.width, height: layerSize.height)
-      metalLayer.drawableSize = CGSize(width: layerSize.width, height: layerSize.height)
+      metalLayer.drawableSize = CGSize(width: layerSize.width * scale, height: layerSize.height * scale)
     }
     
     let angleRad = Matrix4.degrees(toRad: 85.0)

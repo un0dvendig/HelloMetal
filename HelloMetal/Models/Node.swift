@@ -36,6 +36,7 @@ class Node {
   
   var bufferProvider: BufferProvider
   let device: MTLDevice
+  let light = Light(color: (1.0, 1.0, 1.0), ambientIntensity: 0.1, direction: (0.0, 0.0, 1.0), diffuseIntensity: 0.8, shininess: 10, specularIntensity: 2)
   let name: String
   var positionX: Float = 0.0
   var positionY: Float = 0.0
@@ -72,7 +73,8 @@ class Node {
     self.vertexCount = vertices.count
     self.texture = texture
     
-    self.bufferProvider = BufferProvider(device: device, inflightBuffersCount: 3, sizeOfUniformsBuffer: MemoryLayout<Float>.size * Matrix4.numberOfElements() * 2)
+    let sizeOfUniformsBuffer = MemoryLayout<Float>.size * Matrix4.numberOfElements() * 2 + Light.size()
+    self.bufferProvider = BufferProvider(device: device, inflightBuffersCount: 3, sizeOfUniformsBuffer: sizeOfUniformsBuffer)
   }
   
   // MARK: - Methods
@@ -84,7 +86,7 @@ class Node {
     renderPassDescriptor.colorAttachments[0].texture = drawable.texture
     renderPassDescriptor.colorAttachments[0].loadAction = .clear
     renderPassDescriptor.colorAttachments[0].clearColor =
-      MTLClearColor(red: 0.0, green: 104.0/255.0, blue: 5.0/255.0, alpha: 1.0)
+      MTLClearColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0)
     renderPassDescriptor.colorAttachments[0].storeAction = .store
 
     let commandBuffer = commandQueue.makeCommandBuffer()
@@ -121,13 +123,14 @@ class Node {
     
     // 4. Copy the matrix data into the buffer
     
-    let uniformBuffer = bufferProvider.nextUniformsBuffer(projectionMatrix: projectionMatrix, modelViewMatrix: nodeModelMatrix)
+    let uniformBuffer = bufferProvider.nextUniformsBuffer(projectionMatrix: projectionMatrix, modelViewMatrix: nodeModelMatrix, light: light)
     
     // 5. Pass `uniformBuffer` (with data copied) to the
     // vertex shader. This is similar to how we sent
     // the buffer to verex-specific data, expect
     // we use index 1 instead of 0
     renderEncoder?.setVertexBuffer(uniformBuffer, offset: 0, index: 1)
+    renderEncoder?.setFragmentBuffer(uniformBuffer, offset: 0, index: 1)
     
     renderEncoder?.drawPrimitives(type: .triangle, vertexStart: 0, vertexCount: vertexCount,
       instanceCount: vertexCount/3)

@@ -24,19 +24,20 @@ import UIKit
 
 class MetalTexture: NSObject {
 
-  var texture: MTLTexture!
-  var target: MTLTextureType!
-  var width: Int!
-  var height: Int!
+  // MARK: - Properties
+  let bytesPerPixel:Int! = 4
+  let bitsPerComponent:Int! = 8
   var depth: Int!
   var format: MTLPixelFormat!
   var hasAlpha: Bool!
-  var path: String!
+  var height: Int!
   var isMipmaped: Bool!
-  let bytesPerPixel:Int! = 4
-  let bitsPerComponent:Int! = 8
+  var path: String!
+  var texture: MTLTexture!
+  var target: MTLTextureType!
+  var width: Int!
   
-  //MARK: - Creation
+  //MARK: - Initialization
   
   init(resourceName: String, ext: String, mipmaped:Bool) {
     
@@ -51,6 +52,8 @@ class MetalTexture: NSObject {
     
     super.init()
   }
+  
+  // MARK: - Methods
   
   func loadTexture(device: MTLDevice, commandQ: MTLCommandQueue, flip: Bool) {
     

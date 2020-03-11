@@ -28,19 +28,33 @@
 
 import Foundation
 
-struct Vertex {
+struct Light {
   
   // MARK: - Properties
   
-  var x, y, z: Float    // position data
-  var r, g, b, a: Float // color data
-  var s, t: Float       // texture coordinates
-  var nX, nY, nZ: Float // normal
+  var color: (Float, Float, Float)
+  var ambientIntensity: Float
+  var direction: (Float, Float, Float)
+  var diffuseIntensity: Float
+  var shininess: Float // Is not a parameter of light, more like a parameter of the material
+  var specularIntensity: Float
   
   // MARK: - Methods
   
-  func floatBuffer() -> [Float] {
-    return [x, y, z, r, g, b, a, s, t, nX, nY, nZ]
+  static func size() -> Int {
+    return MemoryLayout<Float>.size * 12 // See `Light` struct in Shaders.metal
+  }
+  
+  func raw() -> [Float] {
+    let raw = [
+      color.0, color.1, color.2,
+      ambientIntensity,
+      direction.0, direction.1, direction.2,
+      diffuseIntensity,
+      shininess,
+      specularIntensity
+    ]
+    return raw
   }
   
 }

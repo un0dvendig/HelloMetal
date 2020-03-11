@@ -21,6 +21,7 @@
 		DD7ED3442418E68D00DB7CCC /* BufferProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7ED3432418E68D00DB7CCC /* BufferProvider.swift */; };
 		DD7ED3462418EC7100DB7CCC /* MetalTexture.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7ED3452418EC7100DB7CCC /* MetalTexture.swift */; };
 		DD7ED3482418F1CD00DB7CCC /* cube.png in Resources */ = {isa = PBXBuildFile; fileRef = DD7ED3472418F1CD00DB7CCC /* cube.png */; };
+		DD7ED34A2418FC2400DB7CCC /* Light.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7ED3492418FC2400DB7CCC /* Light.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		DD7ED3432418E68D00DB7CCC /* BufferProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BufferProvider.swift; sourceTree = "<group>"; };
 		DD7ED3452418EC7100DB7CCC /* MetalTexture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MetalTexture.swift; sourceTree = "<group>"; };
 		DD7ED3472418F1CD00DB7CCC /* cube.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cube.png; sourceTree = "<group>"; };
+		DD7ED3492418FC2400DB7CCC /* Light.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Light.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 				DD7ED3452418EC7100DB7CCC /* MetalTexture.swift */,
 				DD3452A32417A4D400EDA603 /* Node.swift */,
 				DD3452A12417A49200EDA603 /* Vertex.swift */,
+				DD7ED3492418FC2400DB7CCC /* Light.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -221,6 +224,7 @@
 				DD7ED3462418EC7100DB7CCC /* MetalTexture.swift in Sources */,
 				DD7ED3442418E68D00DB7CCC /* BufferProvider.swift in Sources */,
 				DD34529C24179A5F00EDA603 /* Shaders.metal in Sources */,
+				DD7ED34A2418FC2400DB7CCC /* Light.swift in Sources */,
 				DD3452A02417A43700EDA603 /* Matrix4.m in Sources */,
 				DD3452A42417A4D400EDA603 /* Node.swift in Sources */,
 				DD3452AA2417AC9800EDA603 /* Cube.swift in Sources */,
