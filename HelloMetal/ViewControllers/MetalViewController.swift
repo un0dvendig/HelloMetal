@@ -61,6 +61,23 @@ class MetalViewController: UIViewController {
     createDisplayLink()
   }
   
+  override func viewDidLayoutSubviews() {
+    super.viewDidLayoutSubviews()
+    
+    if let window = view.window {
+      let scale = window.screen.nativeScale
+      let layerSize = view.bounds.size
+      
+      view.contentScaleFactor = scale
+      metalLayer.frame = CGRect(x: 0, y: 0, width: layerSize.width, height: layerSize.height)
+      metalLayer.drawableSize = CGSize(width: layerSize.width, height: layerSize.height)
+    }
+    
+    let angleRad = Matrix4.degrees(toRad: 85.0)
+    let aspectRatio = Float(self.view.bounds.size.width / self.view.bounds.size.height)
+    projectionMatrix = Matrix4.makePerspectiveViewAngle(angleRad, aspectRatio: aspectRatio, nearZ: 0.01, farZ: 100.0)
+  }
+  
   // MARK: - Methods
   
   func render() {
@@ -89,6 +106,7 @@ class MetalViewController: UIViewController {
   }
   
   // MARK: - Private methods
+  
   private func createMTLDevice() {
     device = MTLCreateSystemDefaultDevice()
   }
@@ -105,7 +123,6 @@ class MetalViewController: UIViewController {
     metalLayer.device = device
     metalLayer.pixelFormat = .bgra8Unorm
     metalLayer.framebufferOnly = true
-    metalLayer.frame = view.layer.frame
     view.layer.addSublayer(metalLayer)
   }
   

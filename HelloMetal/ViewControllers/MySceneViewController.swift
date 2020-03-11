@@ -33,19 +33,25 @@ class MySceneViewController: MetalViewController {
   
   // MARK: - Properties
   
-  var worldModelMatrix: Matrix4!
+  var lastPanLocation: CGPoint!
   var objectToDraw: Cube!
+  let panSensivity: Float = 5.0
+  var worldModelMatrix: Matrix4!
+  
   
   // MARK: - View life cycle
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     
     setupWorldModelMatrix()
     createObjectToDraw()
     self.metalViewControllerDelegate = self
+    setupGestures()
   }
   
   // MARK: - Private methods
+  
   private func setupWorldModelMatrix() {
     worldModelMatrix = Matrix4()
     worldModelMatrix.translate(0.0, y: 0.0, z: -4)
@@ -54,7 +60,29 @@ class MySceneViewController: MetalViewController {
   }
   
   private func createObjectToDraw() {
-    objectToDraw = Cube(device: device)
+    objectToDraw = Cube(device: device, commandQ: commandQueue)
+  }
+  
+  private func setupGestures() {
+    let pan = UIPanGestureRecognizer(target: self, action: #selector(pan(_:)))
+    self.view.addGestureRecognizer(pan)
+  }
+  
+  @objc
+  private func pan(_ panGesture: UIPanGestureRecognizer) {
+    if panGesture.state == .changed {
+      let pointInView = panGesture.location(in: self.view)
+      
+      let xDelta = Float((lastPanLocation.x - pointInView.x) / self.view.bounds.width) * panSensivity
+      let yDelta = Float((lastPanLocation.y - pointInView.y) / self.view.bounds.height) * panSensivity
+      
+      objectToDraw.rotationY -= xDelta
+      objectToDraw.rotationX -= yDelta
+      
+      lastPanLocation = pointInView
+    } else if panGesture.state == .began {
+      lastPanLocation = panGesture.location(in: self.view)
+    }
   }
 }
 

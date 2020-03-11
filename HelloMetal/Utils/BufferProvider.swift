@@ -29,17 +29,51 @@
 import Foundation
 import Metal
 
-class Triangle: Node {
+class BufferProvider: NSObject {
   
-  init(device: MTLDevice) {
+  // MARK: - Properties
+  
+  private var availableBufferIndex: Int = 0
+  var availableResourcesSemaphore: DispatchSemaphore
+  let inflightBuffersCount: Int
+  private var uniformsBuffers: [MTLBuffer]
+  
+  // MARK: - Initialization
+  
+  init(device: MTLDevice, inflightBuffersCount: Int, sizeOfUniformsBuffer: Int) {
+    self.availableResourcesSemaphore = DispatchSemaphore(value: inflightBuffersCount)
     
-    let V0 = Vertex(x: 0.0, y: 1.0, z: 0.0, r: 1.0, g: 0.0, b: 0.0, a: 1.0)
-    let V1 = Vertex(x: -1.0, y: -1.0, z: 0.0, r: 0.0, g: 1.0, b: 0.0, a: 1.0)
-    let V2 = Vertex(x: 1.0, y: -1.0, z: 0.0, r: 0.0, g: 0.0, b: 1.0, a: 1.0)
+    self.inflightBuffersCount = inflightBuffersCount
+    uniformsBuffers = [MTLBuffer]()
     
-    let verticesArray = [V0, V1, V2]
-    super.init(name: "Triangle", vertices: verticesArray, device: device)
+    for _ in 0...inflightBuffersCount-1 {
+      guard let uniformsBuffer = device.makeBuffer(length: sizeOfUniformsBuffer, options: []) else { return }
+      uniformsBuffers.append(uniformsBuffer)
+    }
+  }
+  
+  // MARK: - Deinitialization
+  deinit {
+    for _ in 0...self.inflightBuffersCount {
+      self.availableResourcesSemaphore.signal()
+    }
+  }
+  
+  // MARK: - Methods
+  func nextUniformsBuffer(projectionMatrix: Matrix4, modelViewMatrix: Matrix4) -> MTLBuffer {
+    let buffer = uniformsBuffers[availableBufferIndex]
     
+    let bufferPointer = buffer.contents()
+    
+    memcpy(bufferPointer, modelViewMatrix.raw(), MemoryLayout<Float>.size * Matrix4.numberOfElements())
+    memcpy(bufferPointer + MemoryLayout<Float>.size * Matrix4.numberOfElements(), projectionMatrix.raw(), MemoryLayout<Float>.size * Matrix4.numberOfElements())
+    
+    availableBufferIndex += 1
+    if availableBufferIndex == inflightBuffersCount {
+      availableBufferIndex = 0
+    }
+    
+    return buffer
   }
   
 }
